@@ -1,0 +1,9 @@
+[flake8]
+select = ANN,B,B9,BLK,C,D,DAR,E,F,I,S,W
+ignore = E203,E501,W503,D205,S608,D405,ANN101,ANN002,ANN003,D107,ANN204,B903,S102,D105,S105
+max-line-length = 119
+max-complexity = 10
+application-import-names = exchanger, nucoro
+import-order-style = google
+docstring-convention = google
+exclude = nucoro/exchanger/migrations

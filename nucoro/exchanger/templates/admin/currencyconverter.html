@@ -1,0 +1,37 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+<!-- Override extrahead to add Chart.js -->
+{{ block.super }}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit">Submit</button>
+  </form>
+  {% if data %}
+    <table style="width:100%">      
+      {% for row in data %}
+        {% if forloop.counter0 == 0 %}
+          <tr>
+          {% for key in row %}
+              <th>{{ key }}</th>
+              {% endfor %}
+          </tr>
+        {% endif %}
+        <tr>
+        {% for key, value in row.items %}
+          <td>{{ value }}</td>
+        {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% endif %}
+
+{{ block.super }}
+
+{% endblock %}
