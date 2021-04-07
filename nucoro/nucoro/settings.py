@@ -90,6 +90,8 @@ if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Covers regular testing 
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
     DATABASES['default']['NAME'] = BASE_DIR / 'exchanger/db.sqlite3'
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -166,23 +168,4 @@ RQ_QUEUES = {
         'PASSWORD': 'yourpassword',
         'DEFAULT_TIMEOUT': 360,
     },
-    # 'with-sentinel': {
-    #     'SENTINELS': [('localhost', 26736), ('localhost', 26737)],
-    #     'MASTER_NAME': 'redismaster',
-    #     'DB': 0,
-    #     'PASSWORD': 'yourpassword',
-    #     'SOCKET_TIMEOUT': None,
-    #     'CONNECTION_KWARGS': {
-    #         'socket_connect_timeout': 0.3
-    #     },
-    # },
-    # 'high': {
-    #     'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379/0'),  # If you're on Heroku
-    #     'DEFAULT_TIMEOUT': 500,
-    # },
-    # 'low': {
-    #     'HOST': 'localhost',
-    #     'PORT': 6379,
-    #     'DB': 0,
-    # }
 }

@@ -17,6 +17,21 @@ def get_exchange_rates_view(request: Any) -> Response:
     Args:
         request: the request object.
 
+    Description:
+        parameters:
+            name: date_from
+            in: query
+            type: string
+            description: Date string representation with the format Y-m-d
+            name: date_to
+            in: query
+            type: string
+            description: Date string representation with the format Y-m-d
+            name: source_currency
+            in: query
+            type: string
+            description: String code of the source currency. Ex: EUR
+
     Returns:
         A rest framework Response
     """
@@ -41,6 +56,21 @@ def currency_converter_view(request: Any) -> Response:
     Args:
         request: the request object.
 
+    Description:
+        parameters:
+            name: source_currency
+            in: query
+            type: string
+            description: String code of the source currency. Ex: EUR
+            name: exchanged_currency
+            in: query
+            type: string
+            description: Currency in which we want the result. Ex: USD
+            name: amount
+            in: query
+            type: decimal
+            description: Amount to convert. Ex: 9.76
+
     Returns:
         A rest framework Response
     """
@@ -58,10 +88,30 @@ def currency_converter_view(request: Any) -> Response:
 
 @api_view(['GET'])
 def time_weight_rate_view(request: Any) -> Response:
-    """Retrieve the TWR for a certain amount in a defined period.
+    """Retrieve the TWR for a certain amount in a period from a start_date until now.
 
     Args:
         request: the request object.
+
+    Description:
+        parameters:
+            name: source_currency
+            in: query
+            type: string
+            description: String code of the source currency. Ex: EUR
+            name: exchanged_currency
+            in: query
+            type: string
+            description: Currency in which we invested. Ex: USD
+            name: amount
+            in: query
+            type: decimal
+            description: Amount we invested. Ex: 9.76
+            name: start_date
+            in: query
+            type: string
+            description: The date we invested with the format Y-m-d
+
 
     Returns:
         A rest framework Response
@@ -87,6 +137,26 @@ def generate_async_data(request: Any) -> Response:
 
     Args:
         request: the request object.
+
+    Description:
+        parameters:
+            name: source_currency
+            in: query
+            type: string
+            description: String code of the source currency. Ex: EUR
+            name: date_from
+            in: query
+            type: string
+            description: Date string representation with the format Y-m-d
+            name: date_to
+            in: query
+            type: string
+            description: Date string representation with the format Y-m-d
+            name: exchanged_currencies
+            in: query
+            type: string
+            description: The currencies for which we want the rates (can be more than one). Ex: USD,EUR,GBP
+
 
     Returns:
         A rest framework Response
